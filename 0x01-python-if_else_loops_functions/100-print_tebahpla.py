@@ -6,4 +6,5 @@ def printReverseASCII():
             letter = chr(i - 32)
         print("{}".format(letter), end='')
 
+
 printReverseASCII()
