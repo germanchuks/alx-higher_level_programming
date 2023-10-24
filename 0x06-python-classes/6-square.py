@@ -10,10 +10,13 @@ class Square:
 
     Attributes:
         __size (int): The size of the square.
+        __position (tuple): The position of the square.
 
     Methods:
-        __init__(self, size): Initializes a new Square instance with the
-        given side length.
+        __init__(self, size, position): Initializes a new Square instance with
+                                        the given size and position.
+        area(self): Computes and returns the area of the square.
+        my_print(self): Prints the square with the character #.
 
     """
     def __init__(self, size=0, position=(0, 0)):
@@ -23,6 +26,8 @@ class Square:
         Args:
             size (int): The size of the square. It must be a positive
             integer value.
+            position (tuple): The position of the square, represented as a
+            tuple of two positive integers (horizontal, vertical).
         """
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
@@ -42,10 +47,27 @@ class Square:
 
     @property
     def size(self):
+        """
+        Getter method for the size of the square.
+
+        Returns:
+            int: The size of the square.
+        """
         return (self.__size)
 
     @size.setter
     def size(self, value):
+        """
+        Setter method for the size of the square.
+
+        Args:
+            value (int): The new size to set for the square. It must be a
+            positive integer value.
+
+        Raises:
+            TypeError: If the provided value is not an integer.
+            ValueError: If the provided value is less than 0.
+        """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         if value < 0:
@@ -66,10 +88,27 @@ class Square:
 
     @property
     def position(self):
+        """
+        Getter method for the position of the square.
+
+        Returns:
+            tuple: The position of the square.
+        """
         return self.__position
 
     @position.setter
     def position(self, value):
+        """
+        Setter method for the position of the square.
+
+        Args:
+            value (tuple): The new size to set for the square. It must be
+            tuple with two positive integers.
+
+        Raises:
+            TypeError: If the provided value is not a tuple of two positive
+            integers.
+        """
         if not isinstance(value, tuple) or len(value) != 2 or (
          any(i <= 0 or not isinstance(i, int) for i in value)):
             raise TypeError("position must be a tuple of 2 positive integers")
