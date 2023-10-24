@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Defines a MagicClass matching specified bytecode"""
+
 import math
 
 
@@ -29,9 +31,10 @@ class MagicClass:
         Raises:
             TypeError: If the provided radius is not a number (int or float).
         """
-        if not isinstance(radius, (int, float)):
+        self.__radius = 0
+        if type(radius) is not int and type(radius) is not float:
             raise TypeError("radius must be a number")
-        self.__radius = float(radius)
+        self.__radius = radius
 
     def area(self):
         """
