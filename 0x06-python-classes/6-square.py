@@ -36,15 +36,6 @@ class Square:
         self.__size = size
         self.__position = position
 
-    def area(self):
-        """
-        Computes and returns the area of the square.
-
-        Returns:
-            int: The area of the square (size squared).
-        """
-        return (self.__size ** 2)
-
     @property
     def size(self):
         """
@@ -74,18 +65,6 @@ class Square:
             raise ValueError("size must be >= 0")
         self.__size = value
 
-    def my_print(self):
-        """
-        Prints the square with the character #.
-        """
-        if self.__size == 0:
-            print()
-        else:
-            for _ in range(self.__position[1]):
-                print()
-            for _ in range(self.__size):
-                print(" " * self.__position[0] + "#" * self.__size)
-
     @property
     def position(self):
         """
@@ -94,7 +73,7 @@ class Square:
         Returns:
             tuple: The position of the square.
         """
-        return self.__position
+        return (self.__position)
 
     @position.setter
     def position(self, value):
@@ -109,7 +88,29 @@ class Square:
             TypeError: If the provided value is not a tuple of two positive
             integers.
         """
-        if not isinstance(value, tuple) or len(value) != 2 or (
-         any(i <= 0 or not isinstance(i, int) for i in value)):
+        if (not isinstance(value, tuple) or
+           len(value) != 2 or not all(isinstance(i, int) for i in value) or
+           not all(i >= 0 for i in value)):
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
+
+    def area(self):
+        """
+        Computes and returns the area of the square.
+
+        Returns:
+            int: The area of the square (size squared).
+        """
+        return (self.__size ** 2)
+
+    def my_print(self):
+        """
+        Prints the square with the character #.
+        """
+        if self.__size == 0:
+            print()
+        else:
+            for _ in range(self.__position[1]):
+                print()
+            for _ in range(self.__size):
+                print(" " * self.__position[0] + "#" * self.__size)
