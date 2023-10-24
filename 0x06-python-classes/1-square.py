@@ -9,11 +9,11 @@ class Square:
     A square is a geometric shape with four equal sides and four right angles.
 
     Attributes:
-        size (int): The length of each side of the square.
+        size (int): The size of the square.
 
     Methods:
-        __init__(self, side_length): Initializes a new Square instance with the
-        given side length.
+        __init__(self, size): Initializes a new Square instance with the
+        given size.
 
     """
     def __init__(self, size):
