@@ -1,0 +1,44 @@
+`3-say_my_name`
+
+say_my_name - Prints a message saying 'My name is <first name> <last name>'.
+
+This function takes two string arguments, 'first_name' and 'last_name',
+and prints a message in the format 'My name is <first name> <last name>'.
+If 'first_name' or 'last_name' is not a string, it will raise a TypeError
+exception with the message 'first_name must be a string' or 'last_name must
+be a string'.
+
+IMPORT:
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+EXAMPLES:
+
+1. Test valid input with both first and last names:
+>>> say_my_name("John", "Smith")
+My name is John Smith
+
+2. Test valid input with only the first name:
+>>> say_my_name("Walter")
+My name is Walter 
+
+3. Test empty string input (default arguments):
+>>> say_my_name("")
+My name is  
+
+4. Test invalid input - first name is not a string:
+>>> say_my_name(12, "White")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+5. Test invalid input - last name is not a string:
+>>> say_my_name("Bob", 42)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+6. Test no argument input:
+>>> say_my_name()
+Traceback (most recent call last):
+...
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
