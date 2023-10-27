@@ -1,0 +1,54 @@
+`0-add_integer`
+
+add-integer - Add two integers and return the result.
+
+This function takes two integers, 'a' and 'b', and returns their sum. If
+'a' or 'b' is not an integer, it will be cast to an integer before
+adding, otherwise it raises a type error.
+
+IMPORT:
+>>> add_integer = __import__('0-add_integer').add_integer
+
+EXAMPLES:
+
+1. Positive integers test:
+>>> add_integer(1, 2)
+3
+
+2. Positive and negative integer test:
+>>> add_integer(100, -2)
+98
+
+3. One integer test:
+>>> add_integer(2)
+100
+
+4. One float test:
+>>> add_integer(100.3, -2)
+98
+
+5. One none integer test:
+>>> add_integer(4, "School")
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+
+6. None integer plus default argument test:
+>>> add_integer(None)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+7. Large integers test:
+>>> add_integer(99999999999, 99999999999)
+199999999998
+
+8. No argument provided test:
+>>> add_integer()
+Traceback (most recent call last):
+...
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
+9. Two floats test:
+>>> add_integer(0.38, 123.892)
+123
