@@ -1,0 +1,60 @@
+`4-print_square`
+
+print_square - Prints a square with the character #.
+
+This function prints a square of a specified `size` using the character #.
+A TypeError is raise if `size` is not an int or if `size` is a negative float.
+If `size` is less than zero, a ValueError is raised.
+
+IMPORT:
+>>> print_square = __import__('4-print_square').print_square
+
+EXAMPLES:
+
+1. Test with a valid positive integer size:
+>>> print_square(4)
+####
+####
+####
+####
+
+2. Test with a valid positive integer size (larger square):
+>>> print_square(6)
+######
+######
+######
+######
+######
+######
+
+3. Test with size equal to 0:
+>>> print_square(0)
+
+
+4. Test with size equal to 1:
+>>> print_square(1)
+#
+
+5. Test with a negative integer size (ValueError expected):
+>>> print_square(-2)
+Traceback (most recent call last):
+    ...
+ValueError: size must be >= 0
+
+6. Test with a positive float size:
+>>> print_square(2.5)
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
+7. Test with a negative float size:
+>>> print_square(-3.5)
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
+8. Test with no size provided:
+>>> print_square()
+Traceback (most recent call last):
+    ...
+TypeError: print_square() missing 1 required positional argument: 'size'
