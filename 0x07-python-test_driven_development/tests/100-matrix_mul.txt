@@ -1,0 +1,43 @@
+`100-matrix_mul`
+
+matrix_mul - Multiplies 2 matrices
+
+This function takes in two matrices and returns the result of their multiplication.
+
+IMPORT:
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+EXAMPLES:
+1. Test valid matrix multiplication:
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+[[7, 10], [15, 22]]
+
+2. Test matrix multiplication with different sizes:
+>>> matrix_mul([[1, 2, 3]], [[3, 4], [5, 6]])
+Traceback (most recent call last):
+    ...
+ValueError: m_a and m_b can't be multiplied
+
+3. Test matrix multiplication with invalid input types:
+>>> matrix_mul(42, [[1, 2], [3, 4]])
+Traceback (most recent call last):
+    ...
+TypeError: m_a must be a list
+
+4. Test empty matrices:
+>>> matrix_mul([], [])
+Traceback (most recent call last):
+    ...
+ValueError: m_a can't be empty
+
+5. Test non-rectangular matrices:
+>>> matrix_mul([[1, 2, 3], [4, 5]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+    ...
+TypeError: each row of m_a must be of the same size
+
+6. Test matrix multiplication with non-numeric elements:
+>>> matrix_mul([['a', 'b'], ['c', 'd']], [['e', 'f'], ['g', 'h']])
+Traceback (most recent call last):
+    ...
+TypeError: m_a should contain only integers or floats
