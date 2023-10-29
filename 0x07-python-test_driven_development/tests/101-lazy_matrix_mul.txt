@@ -1,0 +1,42 @@
+`101-lazy_matrix_mul`
+
+lazy_matrix_mul - Multiplies 2 matrices by using the module NumPy
+
+This function takes in two matrices and returns the result of their multiplication using the NumPy module.
+
+IMPORT:
+>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+EXAMPLES:
+1. Test valid matrix multiplication:
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+array([[ 7, 10],
+       [15, 22]])
+
+2. Test matrix multiplication with different sizes:
+>>> lazy_matrix_mul([[1, 2, 3]], [[3, 4], [5, 6]])
+Traceback (most recent call last):
+    ...
+ValueError: shapes (1,3) and (2,2) not aligned: 3 (dim 1) != 2 (dim 0)
+
+3. Test matrix multiplication with invalid input types:
+>>> lazy_matrix_mul(42, [[1, 2], [3, 4]])
+Traceback (most recent call last):
+    ...
+ValueError: Scalar operands are not allowed, use '*' instead
+
+4. Test empty matrices:
+>>> lazy_matrix_mul([], [])
+0.0
+
+5. Test non-rectangular matrices:
+>>> lazy_matrix_mul([[1, 2, 3], [4, 5]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+    ...
+ValueError: setting an array element with a sequence.
+
+6. Test matrix multiplication with non-numeric elements:
+>>> lazy_matrix_mul([['a', 'b'], ['c', 'd']], [['e', 'f'], ['g', 'h']])
+Traceback (most recent call last):
+    ...
+TypeError: Cannot cast scalar from dtype('bool') to dtype('<U1') according to the rule 'safe'
