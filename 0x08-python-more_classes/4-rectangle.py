@@ -76,3 +76,51 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
+
+    def area(self):
+        """
+        Compute and return the area of the rectangle.
+
+        Returns:
+            int: The area of the rectangle (product of its width and height)
+        """
+        return (self.__width * self.__height)
+
+    def perimeter(self):
+        """
+        Compute and return the perimeter of the rectangle
+        (the sum of all four sides).
+
+        Returns:
+            int: The perimeter of the rectangle.
+            If either the width or height is 0, the perimeter is 0.
+        """
+        if self.__width == 0 or self.__height == 0:
+            perimeter = 0
+        else:
+            perimeter = 2*(self.__width + self.__height)
+        return (perimeter)
+
+    def __str__(self):
+        """
+        Return a string representation of the rectangle using '#' characters.
+
+        Returns:
+            str: A string representation of the rectangle.
+        """
+        output_str = ""
+        if self.__width == 0 or self.__height == 0:
+            return (output_str)
+        else:
+            for _ in range(self.__height):
+                output_str += "#" * self.__width + '\n'
+            return (output_str[:-1])
+
+    def __repr__(self):
+        """
+        Returns a string which can be used to recreate the object.
+
+        Returns:
+            str: A string in the format "Rectangle(width, height)".
+        """
+        return (f"Rectangle({self.__width}, {self.__height})")
