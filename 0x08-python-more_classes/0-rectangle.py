@@ -6,7 +6,7 @@ class Rectangle:
     """
     This class represents a rectangle.
 
-    A square is a geometric shape with four sides and four right angles.
+    A rectangle is a geometric shape with four sides and four right angles.
     The opposite sides of a rectangle are parallel and of equal length.
 
     """
