@@ -16,6 +16,12 @@ class Rectangle:
     Methods:
         __init__(self, width=0, height=0): Initializes a new Rectangle
         instance with the given width and height.
+        area(self): Compute and return the area of the rectangle.
+        perimeter(self): Compute and return the perimeter of the rectangle.
+        __str__(self): Return a string representation of the rectangle using
+        '#' characters.
+        __repr__(self): Returns a string that can be used to recreate the
+        object.
 
     """
     def __init__(self, width=0, height=0):

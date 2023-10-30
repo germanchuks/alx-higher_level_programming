@@ -16,6 +16,8 @@ class Rectangle:
     Methods:
         __init__(self, width=0, height=0): Initializes a new Rectangle
         instance with the given width and height.
+        area(self): Compute and return the area of the rectangle.
+        perimeter(self): Compute and return the perimeter of the rectangle.
 
     """
     def __init__(self, width=0, height=0):
@@ -28,8 +30,8 @@ class Rectangle:
             height (int): The height of the rectangle. It must be a positive
             integer value.
         """
-        self.width = width
-        self.height = height
+        self.__width = width
+        self.__height = height
 
     @property
     def width(self):

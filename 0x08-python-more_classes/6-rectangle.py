@@ -19,9 +19,15 @@ class Rectangle:
         area(self): Compute and return the area of the rectangle.
         perimeter(self): Compute and return the perimeter of the rectangle.
         __str__(self): Return a string representation of the rectangle using
-        '#' characters.
-
+        '#'
+        characters.
+        __repr__(self): Returns a string that can be used to recreate the
+        object.
+        __del__(self): Destructor method to print a message when an instance
+        is deleted.
     """
+    number_of_instances = 0
+
     def __init__(self, width=0, height=0):
         """
         Initializes a new Rectangle instance with the given width and height.
@@ -32,8 +38,9 @@ class Rectangle:
             height (int): The height of the rectangle. It must be a positive
             integer value.
         """
-        self.__width = width
-        self.__height = height
+        type(self).number_of_instances += 1
+        self.width = width
+        self.height = height
 
     @property
     def width(self):
@@ -119,3 +126,19 @@ class Rectangle:
             for _ in range(self.__height):
                 output_str += "#" * self.__width + '\n'
             return (output_str[:-1])
+
+    def __repr__(self):
+        """
+        Returns a string which can be used to recreate the object.
+
+        Returns:
+            str: A string in the format "Rectangle(width, height)".
+        """
+        return (f"Rectangle({self.__width}, {self.__height})")
+
+    def __del__(self):
+        """
+        Destructor method to print a message when an instance is deleted.
+        """
+        type(self).number_of_instances -= 1
+        print("Bye rectangle...")
