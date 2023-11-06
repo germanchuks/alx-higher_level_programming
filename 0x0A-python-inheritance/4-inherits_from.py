@@ -1,9 +1,11 @@
 #!/usr/bin/python3
+"""Function to check if object inherits from specified class"""
+
 
 def inherits_from(obj, a_class):
     """
-    Checks if an object inherits (directly or indirectly) from a specified
-    class.
+    This function checks if an object inherits (directly or indirectly) from a
+    specified class.
 
     Args:
     obj: The object to check.
