@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+Defines lookup function for an object attribute.
+"""
+
 
 def lookup(obj):
     """
