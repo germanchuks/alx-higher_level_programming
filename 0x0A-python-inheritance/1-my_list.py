@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Module for MyList inherited from built-in list class"""
+
 
 class MyList(list):
     """
