@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Function to read text file and print to stdout"""
+"""Function to read text file and print to stdout."""
 
 
 def read_file(filename=""):
@@ -13,5 +13,6 @@ def read_file(filename=""):
     Returns:
         None
     """
-    with open(filename, encoding='utf-8') as myFile:
-        print(myFile.read())
+    with open(filename, encoding='utf-8') as my_file:
+        for line in my_file:
+            print(line, end="")
