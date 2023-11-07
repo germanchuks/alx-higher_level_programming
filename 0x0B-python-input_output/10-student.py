@@ -41,6 +41,6 @@ class Student:
             attrs if attrs is not None, otherwise returns all attributes.
         """
         if attrs:
-            return ({attr: value for attr, value in self.__dict__.items() \
+            return ({attr: value for attr, value in self.__dict__.items()
                      if attr in attrs})
         return (self.__dict__)
