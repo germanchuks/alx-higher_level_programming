@@ -25,3 +25,23 @@ class Square(Rectangle):
         """
         return (f"[Square] ({self.id}) {self.x}/{self.y} - "
                 f"{self.width}")
+
+    @property
+    def size(self):
+        """Gets the size of the square."""
+        return (self.width)
+
+    @size.setter
+    def size(self, value):
+        """Sets the size of the square."""
+        if type(value) != int:
+            raise TypeError("width must be an integer")
+        elif value <= 0:
+            raise ValueError("width must be > 0")
+        self.width = value
+
+        if type(value) != int:
+            raise TypeError("height must be an integer")
+        elif value <= 0:
+            raise ValueError("height must be > 0")
+        self.height = value
