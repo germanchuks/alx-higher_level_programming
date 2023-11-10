@@ -125,6 +125,6 @@ class Rectangle(Base):
         """
         Returns the dictionary representation of the rectangle.
         """
-        custom_dict = {'id': self.id, 'size': self.width,
-                       'x': self.x, 'y': self.y}
+        custom_dict = {'x': self.x, 'y': self.y, 'id': self.id,
+                       'height': self.height, 'width': self.width}
         return (custom_dict)
