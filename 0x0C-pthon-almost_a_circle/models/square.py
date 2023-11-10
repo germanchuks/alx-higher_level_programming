@@ -45,3 +45,15 @@ class Square(Rectangle):
         elif value <= 0:
             raise ValueError("height must be > 0")
         self.height = value
+
+    def update(self, *args, **kwargs):
+        """
+        Updates the square by assigning arguments to each attribute.
+        """
+        if args:
+            attributes = ["id", "size", "x", "y"]
+            for i in range(len(args)):
+                setattr(self, attributes[i], args[i])
+        else:
+            for attr, value in kwargs.items():
+                setattr(self, attr, value)
