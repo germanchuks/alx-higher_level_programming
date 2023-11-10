@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Module for Base"""
+import json
 
 
 class Base:
@@ -9,10 +10,6 @@ class Base:
     Attributes:
         __nb_objects (int): A class attribute to keep track of the number of
         objects.
-
-    Methods:
-        __init__(self, id=None): Initializes a new Base instance with an
-        optional ID.
     """
     __nb_objects = 0
 
@@ -30,3 +27,11 @@ class Base:
         else:
             type(self).__nb_objects += 1
             self.id = type(self).__nb_objects
+
+    def to_json_string(list_dictionaries):
+        """
+        Returns the JSON string representation of a list of dictionaries.
+        """
+        if not list_dictionaries:
+            return ("[]")
+        return (json.dumps(list_dictionaries))
