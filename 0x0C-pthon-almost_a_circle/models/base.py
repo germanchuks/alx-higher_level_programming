@@ -49,3 +49,12 @@ class Base:
                 myFile.write(cls.to_json_string(list_objs_dict))
             else:
                 myFile.write(cls.to_json_string([]))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """
+        Returns the list of a JSON string representation.
+        """
+        if not json_string:
+            return ([])
+        return (json.loads(json_string))
