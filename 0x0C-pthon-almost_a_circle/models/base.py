@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module for Base"""
 import json
+import csv
 
 
 class Base:
@@ -64,7 +65,10 @@ class Base:
         """
         Returns an instance with all attributes already set.
         """
-        dummy_instance = cls(1, 1)
+        if cls.__name__ == "Rectangle":
+            dummy_instance = cls(1, 1)
+        elif cls.__name__ == "Square":
+            dummy_instance = cls(1)
         dummy_instance.update(**dictionary)
         return (dummy_instance)
 
@@ -80,5 +84,43 @@ class Base:
                 dict_list = cls.from_json_string(json_string)
                 instance_list = [cls.create(**obj) for obj in dict_list]
                 return (instance_list)
+        except (FileNotFoundError, FileExistsError):
+            return ([])
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Serializes in CSV.
+        """
+        filename = f"{cls.__name__}.csv"
+        with open(filename, mode='w', encoding='utf-8') as myCSVFile:
+            if list_objs == [] or list_objs is None:
+                myCSVFile.write(cls.to_json_string([]))
+            else:
+                if cls.__name__ == "Rectangle":
+                    attr = ["id", "width", "height", "x", "y"]
+                else:
+                    attr = ["id", "size", "x", "y"]
+                dict_write = csv.DictWriter(myCSVFile, fieldnames=attr)
+                for obj in list_objs:
+                    dict_write.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Deserializes in CSV.
+        """
+        filename = f"{cls.__name__}.csv"
+        try:
+            with open(filename, newline='', encoding="utf-8") as myCSVFile:
+                if cls.__name__ == "Rectangle":
+                    attr = ["id", "width", "height", "x", "y"]
+                else:
+                    attr = ["id", "size", "x", "y"]
+                list_dicts = csv.DictReader(myCSVFile, fieldnames=attr)
+                list_dicts = [dict([attr, int(value)]
+                              for attr, value in obj.items())
+                              for obj in list_dicts]
+                return ([cls.create(**obj) for obj in list_dicts])
         except (FileNotFoundError, FileExistsError):
             return ([])
