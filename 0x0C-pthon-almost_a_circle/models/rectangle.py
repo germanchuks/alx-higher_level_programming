@@ -116,8 +116,16 @@ class Rectangle(Base):
 
         if args:
             for i in range(len(args)):
-                setattr(self, attributes[i], args[i])
+                if args[i] is None and attributes[i] == "id":
+                    Base._Base__nb_objects += 1
+                    setattr(self, attributes[i], Base._Base__nb_objects)
+                else:
+                    setattr(self, attributes[i], args[i])
         else:
+            if "id" in kwargs and kwargs["id"] is None:
+                Base._Base__nb_objects += 1
+                kwargs["id"] = Base._Base__nb_objects
+
             for attr, value in kwargs.items():
                 setattr(self, attr, value)
 
