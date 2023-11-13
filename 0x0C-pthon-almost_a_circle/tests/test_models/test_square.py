@@ -42,11 +42,11 @@ class InitTestCase(unittest.TestCase):
 
     def test_square_x_attribute_is_private(self):
         with self.assertRaises(AttributeError):
-            print(Square(1, 2, 0, 0, 1).__x)
+            print(Square(1, 2, 0, 0).__x)
 
     def test_square_y_attribute_is_private(self):
         with self.assertRaises(AttributeError):
-            print(Square(3, 4, 0, 0, 1).__y)
+            print(Square(3, 4, 0, 0).__y)
 
     def test_square_size_getter_method(self):
         square = Square(6, 2, 3, 1)
@@ -334,7 +334,7 @@ class StrAndDisplayTestCase(unittest.TestCase):
 
     def test_display_with_all_attributes(self):
         square = Square(3, 2, 3, 1)
-        expected_display = "\n\n\n  ###\n  ###\n"
+        expected_display = "\n\n\n  ###\n  ###\n  ###\n"
         output = StrAndDisplayTestCase.get_output_method(square, "display")
         self.assertEqual(expected_display, output.getvalue())
 
@@ -432,7 +432,7 @@ class UpdateArgsAndKwargsTestCase(unittest.TestCase):
 
     def test_update_with_float_size(self):
         square = Square(2, 4, 6, 8)
-        with self.assertRaisesRegex(ValueError, "width must be an integer"):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
             square.update(12, 14.5)
 
     def test_update_with_invalid_x_type(self):
@@ -447,13 +447,13 @@ class UpdateArgsAndKwargsTestCase(unittest.TestCase):
 
     def test_update_with_float_x(self):
         square = Square(2, 4, 6, 8)
-        with self.assertRaisesRegex(ValueError, "x must be an integer"):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
             square.update(12, 14, 16.5)
 
     def test_update_with_invalid_y_type(self):
         square = Square(2, 4, 6, 8)
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            square.update(12, 14, "StringNotAllowed")
+            square.update(12, 14, 15, "StringNotAllowed")
 
     def test_update_args_negative_y(self):
         square = Square(2, 4, 6, 8)
@@ -462,7 +462,7 @@ class UpdateArgsAndKwargsTestCase(unittest.TestCase):
 
     def test_update_with_float_y(self):
         square = Square(2, 4, 6, 8)
-        with self.assertRaisesRegex(ValueError, "y must be an integer"):
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
             square.update(12, 14, 16, 18.5)
 
     # kwargs test
@@ -516,7 +516,7 @@ class UpdateArgsAndKwargsTestCase(unittest.TestCase):
 
     def test_update_kwargs_with_float_size(self):
         square = Square(2, 4, 6, 8)
-        with self.assertRaisesRegex(ValueError, "width must be an integer"):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
             square.update(x=12, size=14.5)
 
     def test_update_kwargs_with_invalid_x_type(self):
@@ -531,7 +531,7 @@ class UpdateArgsAndKwargsTestCase(unittest.TestCase):
 
     def test_update_kwargs_with_float_x(self):
         square = Square(2, 4, 6, 8)
-        with self.assertRaisesRegex(ValueError, "x must be an integer"):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
             square.update(y=14, size=16, x=18.5)
 
     def test_update_kwargs_with_invalid_y_type(self):
@@ -546,7 +546,7 @@ class UpdateArgsAndKwargsTestCase(unittest.TestCase):
 
     def test_update_kwargs_with_float_y(self):
         square = Square(2, 4, 6, 8)
-        with self.assertRaisesRegex(ValueError, "y must be an integer"):
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
             square.update(x=12, size=14, id=16, y=20.5)
 
     def test_update_kwargs_with_incorrect_keys(self):
@@ -580,7 +580,7 @@ class ToDictionaryTestCase(unittest.TestCase):
 
     def test_serialize_with_to_dictionary(self):
         square = Square(2, 4, 6, 8)
-        expected_result = {'id': 8, 'x': 6, 'size': 2, 'y': 8}
+        expected_result = {'id': 8, 'x': 4, 'size': 2, 'y': 6}
         self.assertDictEqual(expected_result, square.to_dictionary())
 
     def test_update_with_to_dictionary(self):

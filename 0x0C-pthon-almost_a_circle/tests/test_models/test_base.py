@@ -106,13 +106,13 @@ class ToJSONStringTestCase(unittest.TestCase):
 
     def test_to_json_string_for_rectangle_length_one_dict(self):
         rct = Rectangle(5, 8, 2, 4, 6)
-        self.assertTrue(len(Base.to_json_string([rct.to_dictionary()])) == 53)
+        self.assertTrue(len(Base.to_json_string([rct.to_dictionary()])) == 52)
 
     def test_to_json_string_for_rectangle_length_multiple_dicts(self):
         rect1 = Rectangle(3, 1, 9, 7, 4)
         rect2 = Rectangle(6, 2, 1, 5, 9)
         list_dicts = [rect1.to_dictionary(), rect2.to_dictionary()]
-        self.assertTrue(len(Base.to_json_string(list_dicts)) == 106)
+        self.assertTrue(len(Base.to_json_string(list_dicts)) == 104)
 
     def test_to_json_string_for_square_type(self):
         sq = Square(6, 1, 3, 4)
@@ -120,13 +120,13 @@ class ToJSONStringTestCase(unittest.TestCase):
 
     def test_to_json_string_for_square_length_one_dict(self):
         sq = Square(6, 1, 3, 4)
-        self.assertTrue(len(Base.to_json_string([sq.to_dictionary()])) == 39)
+        self.assertTrue(len(Base.to_json_string([sq.to_dictionary()])) == 38)
 
     def test_to_json_string_for_square_length_multiple_dicts(self):
         square1 = Square(6, 1, 3, 4)
         square2 = Square(2, 5, 7, 8)
         list_dicts = [square1.to_dictionary(), square2.to_dictionary()]
-        self.assertTrue(len(Base.to_json_string(list_dicts)) == 78)
+        self.assertTrue(len(Base.to_json_string(list_dicts)) == 76)
 
     def test_to_json_string_with_more_than_one_arg(self):
         with self.assertRaises(TypeError):
@@ -173,27 +173,27 @@ class SaveToFileTestCase(unittest.TestCase):
         rect = Rectangle(5, 3, 9, 4, 7)
         Rectangle.save_to_file([rect])
         with open("Rectangle.json", "r") as myFile:
-            self.assertTrue(len(myFile.read()) == 57)
+            self.assertTrue(len(myFile.read()) == 52)
 
     def test_save_to_file_multiple_custom_rectangles(self):
         rect1 = Rectangle(6, 2, 3, 8, 6)
         rect2 = Rectangle(4, 9, 1, 7, 2)
         Rectangle.save_to_file([rect1, rect2])
         with open("Rectangle.json", "r") as myFile:
-            self.assertTrue(len(myFile.read()) == 111)
+            self.assertTrue(len(myFile.read()) == 104)
 
     def test_save_to_file_one_custom_square(self):
         square = Square(6, 2, 5, 3)
         Square.save_to_file([square])
         with open("Square.json", "r") as myFile:
-            self.assertTrue(len(myFile.read()) == 43)
+            self.assertTrue(len(myFile.read()) == 38)
 
-    def test_save_to_file_two_multiple_squares(self):
+    def test_save_to_file_multiple_squares(self):
         square1 = Square(3, 7, 2, 4)
         square2 = Square(5, 1, 3, 2)
         Square.save_to_file([square1, square2])
         with open("Square.json", "r") as myFile:
-            self.assertTrue(len(myFile.read()) == 83)
+            self.assertTrue(len(myFile.read()) == 76)
 
     def test_save_to_file_overwrite_square(self):
         square = Square(3, 2, 8, 7)
@@ -201,7 +201,7 @@ class SaveToFileTestCase(unittest.TestCase):
         square = Square(1, 6, 4, 9)
         Square.save_to_file([square])
         with open("Square.json", "r") as myFile:
-            self.assertTrue(len(myFile.read()) == 43)
+            self.assertTrue(len(myFile.read()) == 38)
 
     def test_save_to_file_more_than_one_arg_square(self):
         with self.assertRaises(TypeError):
@@ -315,20 +315,20 @@ class CreateTestCase(unittest.TestCase):
         self.assertIsNot(rect1, rect2)
 
     def test_create_square_instances_not_equal(self):
-        square1 = Square(4, 6, 2, 8, 7)
+        square1 = Square(4, 2, 3, 8)
         square1_dict = square1.to_dictionary()
         square2 = Square.create(**square1_dict)
         self.assertIsNot(square1, square2)
 
     def test_create_rectangle_instances_not_equal_after_modification(self):
-        rect1 = Rectangle(4, 6, 2, 8, 7)
+        rect1 = Rectangle(4, 2, 3, 8, 5)
         rect1_dict = rect1.to_dictionary()
         rect2 = Rectangle.create(**rect1_dict)
         rect2.width = 10
         self.assertNotEqual(rect1, rect2)
 
     def test_create_square_instances_not_equal_after_modification(self):
-        square1 = Square(4, 6, 2, 8, 7)
+        square1 = Square(4, 2, 3, 8)
         square1_dict = square1.to_dictionary()
         square2 = Square.create(**square1_dict)
         square2.size = 10

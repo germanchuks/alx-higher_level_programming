@@ -465,11 +465,11 @@ class UpdateArgsAndKwargsTestCase(unittest.TestCase):
     def test_update_with_four_args(self):
         rect = Rectangle(2, 4, 6, 8, 10)
         rect.update(12, 14, 16, 18)
-        self.assertEqual("[Rectangle] (12) 18/6 - 14/16", str(rect))
+        self.assertEqual("[Rectangle] (12) 18/8 - 14/16", str(rect))
 
     def test_update_with_more_than_five_args(self):
         rect = Rectangle(2, 4, 6, 8, 10)
-        with self.assertRaises(ValueError):
+        with self.assertRaises(IndexError):
             rect.update(12, 14, 16, 18, 20, 22)
 
     def test_update_twice(self):
@@ -507,7 +507,7 @@ class UpdateArgsAndKwargsTestCase(unittest.TestCase):
 
     def test_update_with_float_width(self):
         rect = Rectangle(2, 4, 6, 8, 10)
-        with self.assertRaisesRegex(ValueError, "width must be an integer"):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
             rect.update(12, 14.5)
 
     def test_update_with_height_zero(self):
@@ -527,7 +527,7 @@ class UpdateArgsAndKwargsTestCase(unittest.TestCase):
 
     def test_update_with_float_height(self):
         rect = Rectangle(2, 4, 6, 8, 10)
-        with self.assertRaisesRegex(ValueError, "height must be an integer"):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
             rect.update(12, 14, 16.5)
 
     def test_update_with_invalid_x_type(self):
@@ -542,7 +542,7 @@ class UpdateArgsAndKwargsTestCase(unittest.TestCase):
 
     def test_update_with_float_x(self):
         rect = Rectangle(2, 4, 6, 8, 10)
-        with self.assertRaisesRegex(ValueError, "x must be an integer"):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
             rect.update(12, 14, 16, 18.5)
 
     def test_update_with_invalid_y_type(self):
@@ -557,7 +557,7 @@ class UpdateArgsAndKwargsTestCase(unittest.TestCase):
 
     def test_update_with_float_y(self):
         rect = Rectangle(2, 4, 6, 8, 10)
-        with self.assertRaisesRegex(ValueError, "y must be an integer"):
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
             rect.update(12, 14, 16, 18, 20.5)
 
     # kwargs test
@@ -616,7 +616,7 @@ class UpdateArgsAndKwargsTestCase(unittest.TestCase):
 
     def test_update_kwargs_with_float_width(self):
         rect = Rectangle(2, 4, 6, 8, 10)
-        with self.assertRaisesRegex(ValueError, "width must be an integer"):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
             rect.update(x=12, width=14.5)
 
     def test_update_kwargs_with_height_zero(self):
@@ -636,7 +636,7 @@ class UpdateArgsAndKwargsTestCase(unittest.TestCase):
 
     def test_update_kwargs_with_float_height(self):
         rect = Rectangle(2, 4, 6, 8, 10)
-        with self.assertRaisesRegex(ValueError, "height must be an integer"):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
             rect.update(x=12, id=14, height=16.5)
 
     def test_update_kwargs_with_invalid_x_type(self):
@@ -651,7 +651,7 @@ class UpdateArgsAndKwargsTestCase(unittest.TestCase):
 
     def test_update_kwargs_with_float_x(self):
         rect = Rectangle(2, 4, 6, 8, 10)
-        with self.assertRaisesRegex(ValueError, "x must be an integer"):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
             rect.update(width=12, y=14, height=16, x=18.5)
 
     def test_update_kwargs_with_invalid_y_type(self):
@@ -666,7 +666,7 @@ class UpdateArgsAndKwargsTestCase(unittest.TestCase):
 
     def test_update_kwargs_with_float_y(self):
         rect = Rectangle(2, 4, 6, 8, 10)
-        with self.assertRaisesRegex(ValueError, "y must be an integer"):
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
             rect.update(x=12, height=14, id=16, width=18, y=20.5)
 
     def test_update_kwargs_with_incorrect_keys(self):
