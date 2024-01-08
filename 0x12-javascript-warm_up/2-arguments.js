@@ -5,10 +5,9 @@ If only one argument is passed to the script, print “Argument found”
 Otherwise, print “Arguments found”
 */
 
-const argLength = process.argv.length - 2;
-if (argLength === 0) {
+if (process.argv.length === 2) {
   console.log('No argument');
-} else if (argLength === 1) {
+} else if (process.argv.length === 3) {
   console.log('Argument found');
 } else {
   console.log('Arguments found');
