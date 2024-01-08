@@ -1,9 +1,5 @@
 #!/usr/bin/node
-/* Prints a message depending of the number of arguments passed
-If no arguments are passed to the script, print “No argument”
-If only one argument is passed to the script, print “Argument found”
-Otherwise, print “Arguments found”
-*/
+// Prints a message depending of the number of arguments passed
 
 if (process.argv.length === 2) {
   console.log('No argument');
