@@ -12,11 +12,11 @@ if __name__ == '__main__':
     input_name = argv[4]
     query = '''SELECT *
             FROM states
-            WHERE name = %s
-            ORDER BY id ASC
-            '''
+            WHERE name = '{}'
+            ORDER BY states.id ASC
+            '''.format(input_name)
 
-    cur.execute(query, (input_name,))
+    cur.execute(query)
 
     query_rows = cur.fetchall()
     for row in query_rows:
