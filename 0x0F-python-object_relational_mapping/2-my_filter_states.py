@@ -12,7 +12,7 @@ if __name__ == '__main__':
     input_name = argv[4]
     query = '''SELECT *
             FROM states
-            WHERE name = '{}'
+            WHERE name LIKE BINARY '{}'
             ORDER BY states.id ASC
             '''.format(input_name)
 
