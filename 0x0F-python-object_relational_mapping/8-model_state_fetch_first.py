@@ -13,7 +13,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    first_state = session.query(State).order_by(State.id).first()
+    first_state = session.query(State).first()
 
     if first_state:
         print(f"{first_state.id}: {first_state.name}")
