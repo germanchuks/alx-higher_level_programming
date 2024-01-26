@@ -10,7 +10,7 @@ if __name__ == "__main__":
     url = argv[1]
     r = requests.get(url)
 
-    if eval(r.status_code) >= 400:
+    if r.status_code >= 400:
         print(f"Error code: {r.status_code}")
     else:
         print(r.text)
