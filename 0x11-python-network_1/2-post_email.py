@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
     url = argv[1]
     values = {
-        'email' : argv[2] 
+        'email': argv[2]
     }
 
     data = urlencode(values).encode('ascii')
