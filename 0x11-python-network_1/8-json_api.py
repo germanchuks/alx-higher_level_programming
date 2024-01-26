@@ -7,18 +7,20 @@ if __name__ == "__main__":
     import requests
     from sys import argv
 
-    url = 'http://0.0.0.0:5000/search_user'
-    letter = "" if len(argv) == 0 else argv[1]
+    url = "http://0.0.0.0:5000/search_user"
+    letter = "" if len(argv) == 1 else argv[1]
     payload = {
         'q': letter
     }
 
     r = requests.post(url, data=payload)
+
     try:
         json_r = r.json()
-        if json_r:
-            print(f"[{json_r.get("id")}] {json_r.get("name")}")
-        else:
+
+        if json_r == {}:
             print("No result")
+        else:
+            print("[{}] {}".format(json_r.get("id"), json_r.get("name")))
     except ValueError:
         print("Not a valid JSON")
